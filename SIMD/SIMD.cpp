@@ -4,6 +4,7 @@
 #include <xmmintrin.h>
 #include <iostream>
 #include<emmintrin.h>
+#include<time.h>
 using namespace std;
 
 int sum3_Intrinsics(int* a, int size)
@@ -37,7 +38,17 @@ int sum3_Intrinsics(int* a, int size)
 }
 int main()
 {
-    
+    int* a = new int[1000];
+    srand(0);
+    cout << "原来的数组：" << endl;
+    for (int i = 0; i < 100; i++)
+    {
+        a[i] = rand();
+        cout << a[i] << " ";
+    }
+    cout << endl;
+    int res = sum3_Intrinsics(a, 100);
+    cout << res << endl;
 }
 
 
