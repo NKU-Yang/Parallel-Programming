@@ -3,6 +3,7 @@
 
 #include <xmmintrin.h>
 #include <iostream>
+#include<emmintrin.h>
 using namespace std;
 
 int sum3_Intrinsics(int* a, int size)
@@ -28,8 +29,8 @@ int sum3_Intrinsics(int* a, int size)
     for (int i = 0; i < cntRem; ++i)    s += q[i];
 
     // 将累加值合并
-    xidSum = _mm_hadd_epi32(xidSum, xidSum);    // [SSSE3] 带符号32位水平加法
-    xidSum = _mm_hadd_epi32(xidSum, xidSum);
+    xidSum = _mm_add_epi32(xidSum, xidSum);    // [SSSE3] 带符号32位水平加法
+    xidSum = _mm_add_epi32(xidSum, xidSum);
     s += _mm_cvtsi128_si32(xidSum);    // [SSE2] 返回低32位
 
     return s;
